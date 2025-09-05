@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 홈페이지</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 이미지와 유사한 폰트 추가 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 폰트 설정 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        /* 로고에 'Do Hyeon' 폰트 적용 (플레이스홀더용) */
+        .font-logo {
+            font-family: 'Do Hyeon', sans-serif;
+        }
+        /* 헤더 상단 고정 및 그림자 효과 */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        /* 기존 지도부 소개용 커스텀 오렌지 색상 */
+        .bg-custom-orange {
+            background-color: #EA580C; /* Tailwind orange-600 */
+        }
+        .text-custom-orange {
+            color: #EA580C;
+        }
+        .border-custom-orange {
+            border-color: #EA580C;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- 전체 컨테이너 -->
+    <div class="max-w-7xl mx-auto bg-white">
+
+        <!-- 헤더 -->
+        <header class="sticky-header border-b">
+            <!-- 최상단 바 -->
+            <div class="border-b">
+                <div class="container mx-auto px-4 h-12 flex justify-between items-center text-xs sm:text-sm">
+                    <div>
+                        <span class="font-bold text-orange-500">1,120,045명</span>의 동지들과 함께
+                    </div>
+                    <div class="flex items-center space-x-2 sm:space-x-4">
+                        <div class="flex items-center space-x-1 font-semibold">
+                            <span class="flex items-center justify-center w-5 h-5 bg-orange-500 text-white rounded-full text-xs">5</span>
+                            <span>축신두 님</span>
+                        </div>
+                        
+                        <!-- 지갑, 알림, 메시지 아이콘 버튼 (텍스트 제거) -->
+                        <div class="hidden lg:flex items-center space-x-4 text-gray-600">
+                            <a href="#" class="hover:text-orange-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
+                            </a>
+                            <a href="#" class="hover:text-orange-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                            </a>
+                            <a href="#" class="hover:text-orange-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </a>
+                        </div>
+
+                        <a href="#" class="text-gray-500 hover:text-gray-800">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 메인 네비게이션 -->
+            <div class="container mx-auto px-4 flex justify-between items-center h-20">
+                <!-- 로고 이미지 크기 수정 -->
+                <a href="#">
+                    <img src="https://rallypoint.kr/assets/imgs/logo1.svg" alt="커뮤니티 로고" class="h-12 sm:h-14">
+                </a>
+                
+                <!-- 데스크톱 네비게이션 및 메뉴 아이콘 -->
+                <div class="hidden lg:flex items-center">
+                    <nav class="flex items-center space-x-10 text-xl font-bold h-full">
+                        <a href="#" class="text-gray-700 hover:text-orange-500 h-full flex items-center">소개</a>
+                        <a href="#" class="text-gray-700 hover:text-orange-500 h-full flex items-center">공지</a>
+                        <a href="#" class="text-gray-700 hover:text-orange-500 h-full flex items-center">자유</a>
+                        <a href="#" class="text-gray-700 hover:text-orange-500 h-full flex items-center">지역</a>
+                        <a href="#" class="text-gray-700 hover:text-orange-500 h-full flex items-center">토론</a>
+                        <a href="#" class="text-gray-700 hover:text-orange-500 h-full flex items-center">대학생</a>
+                        <a href="#" class="text-gray-700 hover:text-orange-500 h-full flex items-center">민원</a>
+                    </nav>
+                    <!-- 햄버거 메뉴 아이콘 -->
+                    <button class="ml-10 p-2">
+                        <svg class="w-8 h-8 text-gray-800" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 모바일 메뉴 버튼 -->
+                <button class="lg:hidden p-2" id="mobile-menu-button">
+                    <svg class="w-8 h-8 text-gray-800" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+             <!-- 모바일 메뉴 (색상 변경) -->
+            <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+                <a href="#" class="block px-5 py-4 text-lg font-semibold text-gray-800 hover:bg-gray-50">소개</a>
+                <a href="#" class="block px-5 py-4 text-lg font-semibold text-gray-800 hover:bg-gray-50">공지</a>
+                <a href="#" class="block px-5 py-4 text-lg font-semibold text-gray-800 hover:bg-orange-50 hover:text-orange-600">자유</a>
+                <a href="#" class="block px-5 py-4 text-lg font-semibold text-gray-800 hover:bg-gray-50">지역</a>
+                <a href="#" class="block px-5 py-4 text-lg font-semibold text-gray-800 hover:bg-gray-50">토론</a>
+                <a href="#" class="block px-5 py-4 text-lg font-semibold text-gray-800 hover:bg-gray-50">대학생</a>
+                <a href="#" class="block px-5 py-4 text-lg font-semibold text-gray-800 hover:bg-gray-50">민원</a>
+                <!-- 모바일용 검색창 -->
+                <div class="p-4 border-t">
+                    <div class="relative">
+                        <input type="text" class="w-full border border-gray-300 bg-white h-10 px-4 pr-10 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="검색">
+                        <button type="submit" class="absolute right-0 top-0 mt-2.5 mr-3">
+                            <svg class="text-gray-500 h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 지도부 소개 콘텐츠 -->
+        <main>
+            <div class="container mx-auto p-4 sm:p-6 md:p-8">
+            
+                <!-- 페이지 헤더 -->
+                <header class="bg-custom-orange text-white p-6 sm:p-8 rounded-lg shadow-lg relative overflow-hidden">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold">개혁신당 3기 지도부</h1>
+                    <!-- 장식용 그래픽 요소 -->
+                    <div class="absolute top-0 right-0 h-full w-32">
+                        <div class="absolute w-48 h-48 bg-white/20 transform -rotate-45 -right-20 top-0"></div>
+                        <div class="absolute w-48 h-48 bg-white/10 transform -rotate-45 -right-12 top-8"></div>
+                    </div>
+                </header>
+
+                <div class="mt-8">
+                    
+                    <!-- 당대표 섹션 -->
+                    <div>
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">당대표</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="flex flex-col items-center sm:flex-row sm:items-end sm:justify-between gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-full max-w-xs sm:w-64">
+                                     <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-lg font-bold">당대표</span>
+                                    </div>
+                                     <div class="w-full h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/hbWpMSX.png" alt="이준석 당대표 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-2xl font-bold text-gray-800 tracking-widest">이준석</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-4 sm:gap-8 justify-center">
+                                    <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-36">
+                                        <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                            <span class="text-xs font-bold">비서실 팀장</span>
+                                        </div>
+                                        <div class="w-full h-40 bg-gray-200 rounded-md overflow-hidden">
+                                            <img src="https://i.imgur.com/VmlpVAr.png" alt="곽대중 비서실장 사진" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="mt-2 text-center">
+                                            <p class="text-base font-bold text-gray-800">곽대중</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 w-36">
+                                        <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                            <span class="text-xs font-bold">공보 특보</span>
+                                        </div>
+                                        <div class="w-full h-40 bg-gray-200 rounded-md overflow-hidden"></div>
+                                        <div class="mt-2 text-center">
+                                            <p class="text-base font-bold text-gray-800"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 최고위원회 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">최고위원회</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">원내대표</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/B0rxU1T.png" alt="천하람 원내대표 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">천하람</p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">정책위원회 의장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/3KVUsSc.png" alt="이주영 정책위 의장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이주영</p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-4 md:mt-8">
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">수석최고위원</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/nNlkzd8.png" alt="김성열 수석최고위원 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">김성열</p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">최고위원</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/m7ruq2A.png" alt="주이삭 최고위원 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">주이삭</p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">최고위원</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/nUsYL4t.png" alt="김정철 최고위원 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">김정철</p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 사무처 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">사무처</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">사무총장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/lSyhenb.png" alt="이기인 사무총장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이기인</p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-4 md:mt-8">
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">사무부총장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/3VhdVFI.png" alt="김경한 사무부총장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">김경한</p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">조직부총장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/HRm6bqB.png" alt="이경선 조직부총장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이경선</p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                                <!-- Card Start -->
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">홍보부총장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden"></div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest"></p>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 대변인 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">대변인</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">수석대변인</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/QorxV1P.png" alt="이동훈 수석대변인 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이동훈</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-4 md:mt-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">선임대변인</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden"></div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest"></p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">대변인</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden"></div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">정이한</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 개혁연구원 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">개혁연구원</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">개혁연구원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/5OpIbyi.png" alt="김두수 개혁연구원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">김두수</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-4 md:mt-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">상근부원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/n2wayzK.png" alt="구혁모 상근부원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">구혁모</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">부원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/qe3ddbh.png" alt="이기정 부원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이기정</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">부원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/CDq0Fl4.png" alt="이경전 부원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이경전</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 법률자문위원회 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">법률자문위원회</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">법률자문위원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/qeBbMg6.png" alt="김연기 법률자문위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">김연기</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-4 md:mt-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">부위원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/WS9FFOU.png" alt="하헌휘 부위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">하헌휘</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">위원</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/LJj1wv5.png" alt="권태균 위원 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">권태균</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">위원</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/YmBrT6c.png" alt="김기정 위원 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">김기정</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">위원</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/s9lh6YD.png" alt="정재원 위원 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">정재원</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 인재위원회 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">인재위원회</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">인재위원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/B0rxU1T.png" alt="천하람 인재위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">천하람</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-4 md:mt-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">부위원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/EEayHDG.jpeg" alt="이원욱 부위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이원욱</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">부위원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/281BH7H.png" alt="안만규 부위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">안만규</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 정책위원회 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">정책위원회</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">정책위원회 의장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/3KVUsSc.png" alt="이주영 정책위원회 의장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이주영</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 미래희망위원회 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">미래희망위원회</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">미래희망위원장</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/m7ruq2A.png" alt="주이삭 미래희망위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">주이삭</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 원내 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">원내</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">원내대표</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/B0rxU1T.png" alt="천하람 원내대표 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">천하람</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">국회의원</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/3KVUsSc.png" alt="이주영 국회의원 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이주영</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">국회의원</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/hbWpMSX.png" alt="이준석 국회의원 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이준석</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 시도당 위원장 섹션 -->
+                    <div class="mt-12">
+                        <div class="bg-custom-orange text-white py-3 px-6 rounded-t-lg">
+                            <h2 class="text-xl sm:text-2xl font-semibold">시도당 위원장</h2>
+                        </div>
+                        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-b-lg shadow-md">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">서울</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/HRm6bqB.png" alt="이경선 서울시당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이경선</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">부산</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/T8Uqrhh.png" alt="이재웅 부산시당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이재웅</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">대구 (대행)</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/DjDtFIq.png" alt="김서희 대구시당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">김서희</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">광주</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/DHPPKv0.png" alt="최현수 광주시당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">최현수</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">대전</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/H3bdvzM.png" alt="권중순 대전시당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">권중순</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">경기</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/3VszGnx.png" alt="김미리 경기도당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">김미리</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">충남</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/fhvCeFW.png" alt="이성진 충남도당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">이성진</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">경북</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/qIDFivj.png" alt="황재선 경북도당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">황재선</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">제주 (창준위)</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/8UNcizV.png" alt="양기문 제주도당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">양기문</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-2 border-2 border-custom-orange rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                    <div class="mb-2 bg-custom-orange text-white text-center py-1 rounded-sm">
+                                        <span class="text-base sm:text-lg font-bold">세종 (창준위)</span>
+                                    </div>
+                                    <div class="w-full h-56 sm:h-72 bg-gray-200 rounded-md overflow-hidden">
+                                        <img src="https://i.imgur.com/WS9FFOU.png" alt="하헌휘 세종시당 위원장 사진" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <p class="text-xl sm:text-2xl font-bold text-gray-800 tracking-widest">하헌휘</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- 푸터 -->
+                <footer class="bg-gray-50 text-gray-500 text-xs border-t mt-12 p-8">
+                    <div class="container mx-auto flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:items-end">
+                          <!-- 소셜 아이콘 -->
+                          <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-gray-600">
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2c-2.717 0-3.056.01-4.122.06-1.065.05-1.79.217-2.428.465a4.898 4.898 0 00-1.772 1.153 4.942 4.942 0 00-1.153 1.772c-.248.638-.415 1.363-.465 2.428C2.01 8.944 2 9.283 2 12s.01 3.056.06 4.122c.05 1.065.217 1.79.465 2.428a4.898 4.898 0 001.153 1.772 4.942 4.942 0 001.772 1.153c.638.248 1.363.415 2.428.465C8.944 21.99 9.283 22 12 22s3.056-.01 4.122-.06c1.065-.05 1.79-.217-2.428-.465a4.898 4.898 0 001.772-1.153 4.942 4.942 0 001.153-1.772c.248-.638-.415-1.363-.465-2.428C21.99 15.056 22 14.717 22 12s-.01-3.056-.06-4.122c-.05-1.065-.217-1.79-.465-2.428a4.898 4.898 0 00-1.153-1.772 4.942 4.942 0 00-1.772-1.153c-.638-.248-1.363-.415-2.428-.465C15.056 2.01 14.717 2 12 2zm0 1.44c2.67 0 2.987.01 4.042.058.975.044 1.504.207 1.857.344.467.182.86.399 1.254.793.393.393.61.787.793 1.254.137.353.3.882.344 1.857.048 1.055.058 1.372.058 4.042s-.01 2.987-.058 4.042c-.044.975-.207 1.504-.344 1.857a3.43 3.43 0 01-.793 1.254 3.43 3.43 0 01-1.254.793c-.353.137-.882.3-1.857.344-1.055.048-1.372.058-4.042.058s-2.987-.01-4.042-.058c-.975-.044-1.504-.207-1.857.344a3.43 3.43 0 01-1.254-.793 3.43 3.43 0 01-.793-1.254c-.137-.353-.3-.882-.344-1.857C3.45 15.013 3.44 14.697 3.44 12s.01-2.987.058-4.042c.044-.975.207-1.504.344-1.857.182-.467.399-.86.793-1.254.393-.393.787-.61 1.254-.793.353-.137.882-.3 1.857-.344C9.013 3.45 9.303 3.44 12 3.44zm0 5.85a3.71 3.71 0 100 7.42 3.71 3.71 0 000-7.42zm0 5.98a2.27 2.27 0 110-4.54 2.27 2.27 0 010 4.54zm5.02-6.23a.88.88 0 100 1.76.88.88 0 000-1.76z" clip-rule="evenodd" /></svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-600">
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-600">
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.536 2.536 0 01-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.536 2.536 0 01-1.768-1.768C2 15.255 2 12 2 12s0-3.255.418-4.814a2.536 2.536 0 011.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418zM9.75 15.5V8.5l6.5 3.5-6.5 3.5z" clip-rule="evenodd" /></svg>
+                            </a>
+                         </div>
+                         <div class="text-center sm:text-right space-y-1">
+                            <p>서울특별시 영등포구 여의도동</p>
+                            <p>대표 이준석 | 고유번호 413-82-71411 | 연락처 02-6788-2093</p>
+                            <p class="pt-1 font-semibold">디자인 테스트용 페이지 입니다. 개혁신당의 정식 홈페이지가 아닙니다!</p>
+                         </div>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 모바일 메뉴 토글 스크립트
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
+
+
+
